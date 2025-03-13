@@ -89,3 +89,12 @@ if st.button(L["Generate_Random_Password"]):
     passphrase = passphrase_generator(num_words)
     st.write(f"📝 {L['Generate_Random_Password']}: **{passphrase}**")
     st.success(L["success"])
+
+st.sidebar.markdown(
+    """
+    <div style="text-align: center; font-size: 14px; color: #555;">
+        Created by <strong>NēA⚡ </strong>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
