@@ -9,6 +9,11 @@ import qrcode
 from nltk.corpus import words
 from languages import languages 
 
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+
 #SELECT LANGUAGE
 if "selected_language" not in st.session_state:
     st.session_state.selected_language = "English"
