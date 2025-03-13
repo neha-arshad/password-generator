@@ -1,4 +1,0 @@
-nltk
-streamlit
-nltk==3.9.1
-nltk-data

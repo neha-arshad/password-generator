@@ -102,26 +102,18 @@
 # )
 
 
+
+
 import streamlit as st
 import random
 import string
-import nltk
 import datetime
 import io
 import qrcode
-import os
-from nltk.corpus import words
+from random_word import RandomWords
 from languages import languages 
 
-# Ensure ke NLTK data ka path set ho
-NLTK_DIR = os.path.join(os.getcwd(), "nltk_data")
-nltk.data.path.append(NLTK_DIR)
-
-# Required datasets download karein
-nltk.download("words", download_dir=NLTK_DIR)
-nltk.download("punkt", download_dir=NLTK_DIR)
-
-#SELECT LANGUAGE
+# SELECT LANGUAGE
 if "selected_language" not in st.session_state:
     st.session_state.selected_language = "English"
 
@@ -130,7 +122,8 @@ selected_lang = st.sidebar.selectbox("🌎 Select Language | زبان منتخب
 st.session_state.selected_language = selected_lang
 L = languages[selected_lang] 
 
-word_list = words.words()
+# Random Words Object
+r = RandomWords()
 
 def password_generator(length, use_digits, special_char, similar_charc):
     characters = string.ascii_letters
@@ -142,7 +135,7 @@ def password_generator(length, use_digits, special_char, similar_charc):
         characters = characters.translate(str.maketrans("", "", "O0l1I"))
     return "".join(random.choice(characters) for _ in range(length))
 
-# check password strength
+# Check password strength
 def check_strength(password):
     length = len(password)
     has_digit = any(char.isdigit() for char in password)
@@ -191,7 +184,7 @@ st.subheader(L["Generate_Random_Password"])
 num_words = st.slider(L["num_words"], 2, 5, 3)
 
 def passphrase_generator(num_words):
-    return "-".join(random.sample(word_list, num_words))
+    return "-".join([r.get_random_word() for _ in range(num_words)])
 
 if st.button(L["Generate_Random_Password"]):
     passphrase = passphrase_generator(num_words)
