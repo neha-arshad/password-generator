@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import string
-import nltk.data
+
 import nltk
 import datetime
 import io
@@ -9,10 +9,6 @@ import qrcode
 from nltk.corpus import words
 from languages import languages 
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
 
 #SELECT LANGUAGE
 if "selected_language" not in st.session_state:
