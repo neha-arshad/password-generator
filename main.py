@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 import string
+import nltk.data
 import nltk
 import datetime
 import io
